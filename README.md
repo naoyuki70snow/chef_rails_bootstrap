@@ -1,2 +1,2 @@
 # chef_rails_bootstrap
-create rails bootstrap by chef automatically
+Chefを使ってrailsのgem bootstrapで簡単なアプリを自動作成します。
