@@ -1,4 +1,4 @@
-#
+
 # Cookbook Name:: rails-env
 # Recipe:: default
 #
@@ -33,7 +33,7 @@ end
     creates "/home/#{node['rails-env']['user']}/.rbenv/shims/#{gem}"
   end
 end
-
+=begin
 execute "rails new #{node['rails-env']['project']}" do
   command "/home/#{node['rails-env']['user']}/.rbenv/shims/rails new #{node['rails-env']['project']} --skip-bundle"
   cwd "/home/#{node['rails-env']['user']}"
@@ -41,6 +41,21 @@ execute "rails new #{node['rails-env']['project']}" do
   group node['rails-env']['group']
   environment 'HOME' => "/home/#{node['rails-env']['user']}"
   creates "/home/#{node['rails-env']['user']}/#{node['rails-env']['project']}"
+end
+=end
+git "home/#{node['rails-env']['user']}/#{node['rails-env']['project']}" do
+  repository "https://github.com/naoyuki70snow/#{node['rails-env']['project']}.git"
+  user node['rails-env']['user']
+  group node['rails-env']['group']
+  action :sync
+end
+
+execute "rake db:migrate" do
+  command "/home/#{node['rails-env']['user']}/.rbenv/shims/rake db:migrate"
+  cwd "/home/#{node['rails-env']['user']}/#{node['rails-env']['project']}"
+  user node['rails-env']['user']
+  group node['rails-env']['group']
+  environment 'HOME' => "/home/#{node['rails-env']['user']}"
 end
 
 %w{shared shared/pids shared/log}.each do |dir|
@@ -51,11 +66,11 @@ end
     action :create
   end
 end
-   
+=begin   
 cookbook_file "/home/#{node['rails-env']['user']}/#{node['rails-env']['project']}/Gemfile" do
   mode 00664
 end
-
+=end
 cookbook_file "/home/#{node['rails-env']['user']}/#{node['rails-env']['project']}/config/unicorn.rb" do
   mode 00664
 end
