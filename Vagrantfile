@@ -18,5 +18,6 @@ Vagrant.configure(2) do |config|
     b.vm.provision :shell, :inline => "yum install -y #{chef_dk_url}"
     b.vm.provision :shell, :inline => "su - vagrant -c 'chef gem install knife-solo'"
     b.vm.provision :shell, :inline => "echo provision end"
+    b.vm.provision :shell, :path => "ssh-setup.sh"
   end
 end
