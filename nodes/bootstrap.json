@@ -1,5 +1,10 @@
 {
   "environment" : "development",
+  "attributes" : {
+    "nginx" : {
+      "ip" : "192.168.228.30"
+    }
+  },
   "run_list" : [
     "role[web]"
   ]
