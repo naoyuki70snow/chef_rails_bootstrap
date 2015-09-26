@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-%w{git openssl-devel sqlite-devel gcc}.each do |pkg|
+%w{git openssl-devel sqlite-devel gcc readline-devel}.each do |pkg|
   package pkg do
     action :install
   end

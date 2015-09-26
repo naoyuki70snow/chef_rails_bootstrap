@@ -41,7 +41,7 @@ git "home/#{node['rails-env']['user']}/#{node['rails-env']['project']}" do
   action :sync
 end
 
-%w{shared shared/pids shared/log}.each do |dir|
+%w{shared shared/pids shared/log tmp tmp/sockets}.each do |dir|
   directory "/home/#{node['rails-env']['user']}/#{node['rails-env']['project']}/#{dir}" do
     owner node['rails-env']['user']
     group node['rails-env']['group']
