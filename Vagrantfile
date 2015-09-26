@@ -1,7 +1,7 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "chef/centos-6.6"
 
-  chef_dk_url = "https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.5.1-1.el6.x86_64.rpm"
+  chef_dk_url = "https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.8.0-1.el6.x86_64.rpm"
 
   config.vm.define :bootstrap do | b |
     b.vm.hostname = "bootstrap"
