@@ -1,0 +1,4 @@
+.vagrant/
+Berksfile.lock
+site-cookbooks/yum-epel/
+site-cookbooks/yum/
