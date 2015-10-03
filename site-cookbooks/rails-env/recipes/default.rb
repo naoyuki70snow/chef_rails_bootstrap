@@ -8,7 +8,7 @@
 #
 include_recipe 'ruby-env'
 
-%w{libxml2-devel libxslt-devel}.each do |pkg|
+%w{libxml2-devel libxslt-devel libicu-devel cmake}.each do |pkg|
   package pkg do
     action :install
   end
